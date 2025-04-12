@@ -5,3 +5,10 @@ Image Classification Project for the summer Semester 2025. We try to classify Br
 use this to set up conda env:
 
 conda env create -f environment.yml
+
+activate the evironment with:
+conda activate computer-vision
+
+Download the data:
+
+python downloader.py
