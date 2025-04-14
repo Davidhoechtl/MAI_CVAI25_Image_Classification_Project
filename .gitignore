@@ -1,1 +1,5 @@
 .ipynb_checkpoints/
+
+python_project/.idea/
+python_project/__pycache__/
+python_project/data/
