@@ -10,7 +10,7 @@ learning_rate = 0.001
 num_epochs = 10
 num_classes = 3  # Briefcase, Axe, Box
 
-def train(train_dataset, test_dataset, weights, resnet_name='NoNameResnet50'):
+def train_and_eval(train_dataset, test_dataset, weights, resnet_name='NoNameResnet50'):
     # Check for GPU availability
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Training is being performed on: {device}")

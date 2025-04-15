@@ -50,4 +50,7 @@ def train_and_evaluate(model, optimizer, criterion, device, train_dataset, test_
         test_accuracies.append(accuracy)
         print(f"Test Accuracy after Epoch {epoch+1}: {accuracy:.2f}%")
 
+    # Print the number of parameters in the model
+    total_params = sum(p.numel() for p in model.parameters())
+    print(f"Total number of parameters in the model {description}: {total_params}")
     return train_losses, test_accuracies
