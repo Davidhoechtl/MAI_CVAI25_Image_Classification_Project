@@ -17,8 +17,8 @@ import os
 epochs = 10
 
 # Download data if it doesn't exist
-if downloader.data_exists() == False:
-    downloader.download_images()
+#if downloader.data_exists() == False:
+#   downloader.download_images()
 
 # Define paths for data
 workspaceFold = Path(__file__).resolve().parent
