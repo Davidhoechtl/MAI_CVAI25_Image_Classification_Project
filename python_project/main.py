@@ -17,11 +17,11 @@ import os
 epochs = 10
 
 # Download data if it doesn't exist
-#if downloader.data_exists() == False:
-#   downloader.download_images()
+if downloader.data_exists() == False:
+    downloader.download_images()
 
 # Define paths for data
-workspaceFold = Path(__file__).resolve().parent
+workspaceFold = Path(__file__).resolve().parent.parent
 train_folder = workspaceFold / "data" / "train"
 test_folder = workspaceFold / "data" / "test"
 augmented_data_output_folder = workspaceFold / "data" / "train_augmented"
@@ -29,9 +29,9 @@ augmented_data_output_folder = workspaceFold / "data" / "train_augmented"
 images_folder_for_activation_map = workspaceFold / "images_for_actmap"
 
 # Apply augmentations to the dataset
-apply_augmentation_to_set(train_folder/"axe", augmented_data_output_folder/"axe")
-apply_augmentation_to_set(train_folder/"box", augmented_data_output_folder/"box")
-apply_augmentation_to_set(train_folder/"briefcase", augmented_data_output_folder/"briefcase")
+apply_augmentation_to_set(train_folder/"Axe", augmented_data_output_folder/"Axe")
+apply_augmentation_to_set(train_folder/"Box", augmented_data_output_folder/"Box")
+apply_augmentation_to_set(train_folder/"Briefcase", augmented_data_output_folder/"Briefcase")
 
 # Data augmentation and preprocessing
 train_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1.0 / 255)
