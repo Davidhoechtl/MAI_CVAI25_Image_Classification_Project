@@ -5,20 +5,14 @@ import tensorflow as tf
 from keras.applications import ResNet50
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.models import Model
-#from keras.preprocessing.image import load_img, img_to_array
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from keras.preprocessing.image import load_img, img_to_array
 from keras.optimizers import Adam
 import time
 import numpy as np
 import matplotlib.pyplot as plt
 from augmentaion import apply_augmentation_to_set
 from activaion_map import preprocess_image, generate_activation_map, show_activation_map
-import ResNet50Factory
-import pandas as pd
-
-print(tf.__version__)
-print(tf.test.is_built_with_cuda())
-print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+import os
 
 epochs = 10
 
@@ -32,7 +26,7 @@ train_folder = workspaceFold / "data" / "train"
 test_folder = workspaceFold / "data" / "test"
 augmented_data_output_folder = workspaceFold / "data" / "train_augmented"
 # Define the folder containing the images
-images_folder_for_activation_map = workspaceFold / "images_for_actmap"
+images_folder_for_activation_map = workspaceFold / "python_project/images_for_actmap"
 
 # Apply augmentations to the dataset
 apply_augmentation_to_set(train_folder/"Axe", augmented_data_output_folder/"Axe")
@@ -64,12 +58,29 @@ def evaluate_model(train_gen, test_gen, model):
     print(f"{model.name} Runtime: {model_end_time - model_start_time:.2f} seconds")
     history_dict[model.name] = model_history
 
+# Function to create a ResNet50 model
+def create_resnet50(weights, num_classes):
+    print(f"Creating ResNet50 model with weights: {weights}")
+    base_model = ResNet50(weights=weights, include_top=False, input_shape=(224, 224, 3))
+    x = base_model.output
+    x = GlobalAveragePooling2D()(x)
+    x = Dense(1024, activation="relu")(x)
+    predictions = Dense(num_classes, activation="softmax")(x)
+    model = Model(inputs=base_model.input, outputs=predictions)
+    return model
+
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 # Measure overall runtime
 overall_start_time = time.time()
 
 # Experiment 1 - Plain ResNet50 (Randomly Initialized)
-plain_model = ResNet50Factory.create_resnet50(weights=None, num_classes=train_generator.num_classes, name="Plain ResNet50")
-evaluate_model(train_generator, test_generator, plain_model)
+print("Experiment 1: Plain ResNet50 (Randomly Initialized)")
+plain_model_start_time = time.time()
+plain_model = create_resnet50(weights=None, num_classes=train_generator.num_classes)
+plain_model.compile(optimizer=Adam(learning_rate=0.001), loss="categorical_crossentropy", metrics=["accuracy"])
+plain_history = plain_model.fit(train_generator, epochs=epochs, validation_data=test_generator)
+plain_model_end_time = time.time()
+print(f"Plain ResNet50 Runtime: {plain_model_end_time - plain_model_start_time:.2f} seconds")
 
 # Experiment 2 - Pre-trained ResNet50 (Transfer Learning)
 pretrained_model = ResNet50Factory.create_resnet50(weights="imagenet", num_classes=train_generator.num_classes, name="Pre-trained ResNet50")
@@ -172,14 +183,14 @@ plt.show()
     
 
 
-# Classify images and generate activation maps for each model
-# models = [
-#     ("Plain ResNet50", plain_model),
-#     ("Pre-trained ResNet50", pretrained_model),
-#     ("Plain ResNet50 (Augmented)", plain_aug_model),
-#     ("Pre-trained ResNet50 (Augmented)", pretrained_aug_model),
-# ]
+#Classify images and generate activation maps for each model
+models = [
+    ("Plain ResNet50", plain_model),
+    ("Pre-trained ResNet50", pretrained_model),
+    ("Plain ResNet50 (Augmented)", plain_aug_model),
+    ("Pre-trained ResNet50 (Augmented)", pretrained_aug_model),
+]
 
-# class_names = list(train_generator.class_indices.keys())  # Get class names
+class_names = list(train_generator.class_indices.keys())  # Get class names
 
-# show_activation_map(models, images_folder_for_activation_map, class_names)
+show_activation_map(models, images_folder_for_activation_map, class_names)

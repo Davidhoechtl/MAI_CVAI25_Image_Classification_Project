@@ -1,6 +1,4 @@
-from math import ceil
 import random
-import sys
 import zipfile
 import pandas as pd
 import os
@@ -11,6 +9,8 @@ import glob
 from tqdm import tqdm
 from pathlib import Path
 from io import BytesIO
+from math import ceil
+from icrawler.builtin import BingImageCrawler
 
 
 def data_exists():
@@ -30,14 +30,14 @@ def data_exists():
 
 def download_images():
     workspaceFold = Path(__file__).resolve().parent.parent
+
     csv_dir =  workspaceFold / "openimages_csv"
     output_dir =  workspaceFold / "data"
+
     os.makedirs(csv_dir, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
 
-
-
-    # --- Download CSV files ---
+    # === Openimages CSV files ===
     download_links = {
         "oidv7-class-descriptions-boxable.csv": "https://storage.googleapis.com/openimages/v7/oidv7-class-descriptions-boxable.csv",
         "oidv6-train-annotations-bbox.csv": "https://storage.googleapis.com/openimages/v6/oidv6-train-annotations-bbox.csv",
@@ -48,6 +48,7 @@ def download_images():
         "test-images-with-rotation.csv": "https://storage.googleapis.com/openimages/2018_04/test/test-images-with-rotation.csv"
     }
 
+    # === Step 1 Downloading CSV files from OpenImages === 
     print("🔽 Lade CSV-Dateien herunter...")
     for filename, url in download_links.items():
         filepath = Path(csv_dir) / filename
@@ -66,13 +67,12 @@ def download_images():
     target_classes = ["Axe", "Briefcase", "Box"]
     max_images_per_class = 500
 
-    # 1. load Label-ID Mapping
+    # === Step 2 loading Label-ID Mapping and Bounding Box === 
     classes_df = pd.read_csv(f"{csv_dir}/oidv7-class-descriptions-boxable.csv", header=None, names=["LabelName", "ClassName"])
     label_map = dict(zip(classes_df.ClassName, classes_df.LabelName))
     target_labels = {cls: label_map[cls] for cls in target_classes}
     print("\n\nGefundene Label-IDs:", target_labels)
 
-    # 2. load Bounding Box
     bbox_train = pd.read_csv(f"{csv_dir}/oidv6-train-annotations-bbox.csv")
     bbox_val = pd.read_csv(f"{csv_dir}/validation-annotations-bbox.csv")
     bbox_test = pd.read_csv(f"{csv_dir}/test-annotations-bbox.csv")
@@ -80,7 +80,7 @@ def download_images():
     bbox_df = pd.concat([bbox_train, bbox_val, bbox_test], ignore_index=True)
     filtered_bbox = bbox_df[bbox_df['LabelName'].isin(target_labels.values())]
 
-    # 3. load pictur urls
+    # === Step 3 load pictur URL from .csv files === 
     meta_train = pd.read_csv(f"{csv_dir}/train-images-boxable-with-rotation.csv", usecols=["ImageID", "OriginalURL"])
     meta_val = pd.read_csv(f"{csv_dir}/validation-images-with-rotation.csv", usecols=["ImageID", "OriginalURL"])
     meta_test = pd.read_csv(f"{csv_dir}/test-images-with-rotation.csv", usecols=["ImageID", "OriginalURL"])
@@ -88,7 +88,6 @@ def download_images():
     image_meta = pd.concat([meta_train, meta_val, meta_test], ignore_index=True)
     image_meta = image_meta.dropna()
 
-    # load pictures
     for class_name, label_id in target_labels.items():
         class_dir = Path(f"{output_dir}/{class_name}")
         class_dir.mkdir(parents=True, exist_ok=True)
@@ -96,7 +95,6 @@ def download_images():
         image_ids = filtered_bbox[filtered_bbox['LabelName'] == label_id]['ImageID'].unique()
         image_ids = image_ids[:max_images_per_class]
 
-        # URLs from IDs
         urls = image_meta[image_meta['ImageID'].isin(image_ids)]
 
         print(f"🔽 {len(urls)} Bilder werden für '{class_name}' heruntergeladen...")
@@ -111,10 +109,10 @@ def download_images():
                     with open(file_path, "wb") as f:
                         f.write(r.content)
             except Exception:
-                continue # Ignore errors and continue with next image
+                continue
 
 
-    # === Step 1: Download and Extract ZIP ===
+    # === Step 4 Download additional pictures and Extract ZIP ===
     zip_url = "https://storage.googleapis.com/cvstock-932a9-h58gl/1a78s8d2ckm3675v728so2.zip"
     axe_dir = workspaceFold/ "data/Axe"
 
@@ -129,9 +127,31 @@ def download_images():
             print(f"❌ Fehler beim Herunterladen der ZIP-Datei. Status-Code: {r.status_code}")
     except Exception as e:
         print(f"❌ Fehler beim Herunterladen oder Entpacken der ZIP-Datei: {e}")
+    
+    keyword = [
+        "briefcase",
+        "briefcase on table",
+        "briefcase street"
+    ]
 
+    briefcase_dir = workspaceFold / "data/Briefcase"
 
-    # === Step 2: Move Images ===
+    crawler = BingImageCrawler(
+        storage={'root_dir': briefcase_dir},
+        downloader_threads=4,
+        feeder_threads=1
+    )
+
+    for kw in keyword:
+        crawler.crawl(
+            keyword=kw,
+            max_num = 550,
+            filters={
+                "type": "photo"
+            }
+        )
+
+    # === Step 5 move downloaded images to destination folder  ===
     axe_nested_root = workspaceFold / axe_dir / "images.cv_1a78s8d2ckm3675v728so2/data"
     destination = workspaceFold / axe_dir
 
@@ -160,18 +180,17 @@ def download_images():
             else:
                 skipped_non_images += 1
 
-    # === Step 3: Optional - Clean Up ===
+    # === Step 5 clean up and data overview ===
     extracted_zip_folder = workspaceFold / axe_dir / "images.cv_1a78s8d2ckm3675v728so2"
     try:
         shutil.rmtree(extracted_zip_folder)
-        print(f"\n🧹 Ordner '{extracted_zip_folder}' erfolgreich gelöscht.")
     except Exception as e:
         print(f"Fehler beim Löschen von '{extracted_zip_folder}': {e}")
 
     print(f"\n✅ Zusammenfassung:")
     print(f"  📦  {moved} Bilder verschoben.")
     print(f"  🔁  {skipped_existing} Dateien übersprungen (bereits vorhanden).")
-    print(f"  🗂️   {skipped_non_images} Nicht-Bilddateien ignoriert.")
+    print(f"  🗂️   {skipped_non_images} Nicht-Bilddateien ignoriert.\n")
     for class_name in target_classes:
         class_dir = Path(f"{output_dir}/{class_name}")
         image_files = glob.glob(str(class_dir / "*.jpg"))
@@ -181,7 +200,7 @@ def download_images():
     image_exts = [".jpg", ".jpeg", ".png"]
     splits = {"train": 0.75, "test": 0.25}
 
-    # Create split directories
+    # === Step 6 create split directories === 
     for split in splits:
         (output_dir / split).mkdir(parents=True, exist_ok=True)
     
@@ -206,7 +225,6 @@ def download_images():
                 for file in files:
                     shutil.move(str(file), str(dest_dir / file.name))
 
-            # Delete original class folder
             shutil.rmtree(class_dir)
             print(f"✅ '{class_name}' in train/test aufgeteilt und Original gelöscht.")
 
