@@ -14,9 +14,9 @@ from augmentaion import apply_augmentation_to_set
 from activaion_map import preprocess_image, generate_activation_map, show_activation_map
 import os
 
-epochs = 10
+epochs = 1
 
-# Download data if it doesn't exist
+#Download data if it doesn't exist
 if downloader.data_exists() == False:
     downloader.download_images()
 
@@ -26,7 +26,7 @@ train_folder = workspaceFold / "data" / "train"
 test_folder = workspaceFold / "data" / "test"
 augmented_data_output_folder = workspaceFold / "data" / "train_augmented"
 # Define the folder containing the images
-images_folder_for_activation_map = workspaceFold / "images_for_actmap"
+images_folder_for_activation_map = "/Users/pulkit/Documents/cvai/MAI_CVAI25_Image_Classification_Project/python_project/images_for_actmap"
 
 # Apply augmentations to the dataset
 apply_augmentation_to_set(train_folder/"Axe", augmented_data_output_folder/"Axe")
@@ -82,7 +82,7 @@ pretrained_history = pretrained_model.fit(train_generator, epochs=epochs, valida
 pretrained_model_end_time = time.time()
 print(f"Pre-trained ResNet50 Runtime: {pretrained_model_end_time - pretrained_model_start_time:.2f} seconds")
 
-# Experiment 3 - Plain ResNet50 with Augmented Data
+#Experiment 3 - Plain ResNet50 with Augmented Data
 print("\nExperiment 3: Plain ResNet50 (Augmented Data)")
 plain_aug_model_start_time = time.time()
 plain_aug_model = create_resnet50(weights=None, num_classes=train_generator_augmented.num_classes)
@@ -108,34 +108,34 @@ print(f"\nOverall Runtime: {overall_end_time - overall_start_time:.2f} seconds")
 print("\nComparison of Plain vs Pre-trained ResNet50:")
 for epoch in range(10):
     print(f"Epoch {epoch+1}: Plain Loss = {plain_history.history['loss'][epoch]:.4f}, "
-          f"Pre-trained Loss = {pretrained_history.history['loss'][epoch]:.4f}, "
-          f"Plain Accuracy = {plain_history.history['accuracy'][epoch]:.2f}, "
-          f"Pre-trained Accuracy = {pretrained_history.history['accuracy'][epoch]:.2f}")
+        f"Pre-trained Loss = {pretrained_history.history['loss'][epoch]:.4f}, "
+        f"Plain Accuracy = {plain_history.history['accuracy'][epoch]:.2f}, "
+        f"Pre-trained Accuracy = {pretrained_history.history['accuracy'][epoch]:.2f}")
 
 print("\nComparison of Plain vs Pre-trained ResNet50 (Augmented Data):")
 for epoch in range(10):
     print(f"Epoch {epoch+1}: Plain Augmented Loss = {plain_aug_history.history['loss'][epoch]:.4f}, "
-          f"Pre-trained Augmented Loss = {pretrained_aug_history.history['loss'][epoch]:.4f}, "
-          f"Plain Augmented Accuracy = {plain_aug_history.history['accuracy'][epoch]:.2f}, "
-          f"Pre-trained Augmented Accuracy = {pretrained_aug_history.history['accuracy'][epoch]:.2f}")
+        f"Pre-trained Augmented Loss = {pretrained_aug_history.history['loss'][epoch]:.4f}, "
+        f"Plain Augmented Accuracy = {plain_aug_history.history['accuracy'][epoch]:.2f}, "
+        f"Pre-trained Augmented Accuracy = {pretrained_aug_history.history['accuracy'][epoch]:.2f}")
 
 print("\nComparison of Augmented vs Non-Augmented Results:")
 for epoch in range(10):
     print(f"Epoch {epoch+1}: Non-Augmented Loss = {plain_history.history['loss'][epoch]:.4f}, "
-          f"Augmented Loss = {plain_aug_history.history['loss'][epoch]:.4f}, "
-          f"Non-Augmented Accuracy = {plain_history.history['accuracy'][epoch]:.2f}, "
-          f"Augmented Accuracy = {plain_aug_history.history['accuracy'][epoch]:.2f}")
+        f"Augmented Loss = {plain_aug_history.history['loss'][epoch]:.4f}, "
+        f"Non-Augmented Accuracy = {plain_history.history['accuracy'][epoch]:.2f}, "
+        f"Augmented Accuracy = {plain_aug_history.history['accuracy'][epoch]:.2f}")
     
 
 
-# Classify images and generate activation maps for each model
-# models = [
-#     ("Plain ResNet50", plain_model),
-#     ("Pre-trained ResNet50", pretrained_model),
-#     ("Plain ResNet50 (Augmented)", plain_aug_model),
-#     ("Pre-trained ResNet50 (Augmented)", pretrained_aug_model),
-# ]
+#Classify images and generate activation maps for each model
+models = [
+    ("Plain ResNet50", plain_model),
+    ("Pre-trained ResNet50", pretrained_model),
+    ("Plain ResNet50 (Augmented)", plain_aug_model),
+    ("Pre-trained ResNet50 (Augmented)", pretrained_aug_model),
+]
 
-# class_names = list(train_generator.class_indices.keys())  # Get class names
+class_names = list(train_generator.class_indices.keys())  # Get class names
 
-# show_activation_map(models, images_folder_for_activation_map, class_names)
+show_activation_map(models, images_folder_for_activation_map, class_names)
