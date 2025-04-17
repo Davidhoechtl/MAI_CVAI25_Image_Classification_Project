@@ -69,11 +69,11 @@ print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 overall_start_time = time.time()
 
 # Experiment 1 - Plain ResNet50 (Randomly Initialized)
-plain_model = ResNet50Factory.create_resnet50(weights=None, num_classes=train_generator.num_classes, name="Plain ResNet50")
+plain_model = ResNet50Factory.create_resnet50(weights=None, num_classes=train_generator.num_classes, name="Plain_ResNet50")
 evaluate_model(train_generator, test_generator, plain_model)
 
 # Experiment 2 - Pre-trained ResNet50 (Transfer Learning)
-pretrained_model = ResNet50Factory.create_resnet50(weights="imagenet", num_classes=train_generator.num_classes, name="Pre-trained ResNet50")
+pretrained_model = ResNet50Factory.create_resnet50(weights="imagenet", num_classes=train_generator.num_classes, name="Pre_trained_ResNet50")
 evaluate_model(train_generator, test_generator, pretrained_model)
 
 # Experiment 3 - Plain ResNet50 with Augmented Data

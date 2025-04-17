@@ -9,7 +9,7 @@ def create_resnet50(weights, num_classes, name):
     x = GlobalAveragePooling2D()(x)
     x = Dense(1024, activation="relu")(x)
     predictions = Dense(num_classes, activation="softmax")(x)
-    model = Model(inputs=base_model.input, outputs=predictions)
+    model = Model(inputs=base_model.input, outputs=predictions, name=name)
     return model
 
 def create_resnet50_kernel1x1(weights, num_classes):
@@ -65,4 +65,4 @@ def create_resnet50_frozen_layers(weights='imagenet', num_classes=3):
     x = Dense(1024, activation='relu')(x)
     predictions = Dense(num_classes, activation='softmax')(x)
     model = Model(inputs=base.input, outputs=predictions, name="custom_resnet50_frozen")
-    return base
+    return model
