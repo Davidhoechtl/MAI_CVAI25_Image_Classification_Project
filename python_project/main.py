@@ -26,7 +26,7 @@ train_folder = workspaceFold / "data" / "train"
 test_folder = workspaceFold / "data" / "test"
 augmented_data_output_folder = workspaceFold / "data" / "train_augmented"
 # Define the folder containing the images
-images_folder_for_activation_map = "/Users/pulkit/Documents/cvai/MAI_CVAI25_Image_Classification_Project/python_project/images_for_actmap"
+images_folder_for_activation_map = workspaceFold / "python_project/images_for_actmap"
 
 # Apply augmentations to the dataset
 apply_augmentation_to_set(train_folder/"Axe", augmented_data_output_folder/"Axe")
