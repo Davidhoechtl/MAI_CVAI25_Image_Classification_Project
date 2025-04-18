@@ -1,0 +1,361 @@
+24/24 [==============================] - 24s 788ms/step - loss: 3.2352 - accuracy: 0.5091 - val_loss: 26.1285 - val_accuracy: 0.4724
+Epoch 2/10
+24/24 [==============================] - 16s 672ms/step - loss: 1.0712 - accuracy: 0.6029 - val_loss: 1.1467 - val_accuracy: 0.4409
+Epoch 3/10
+24/24 [==============================] - 16s 669ms/step - loss: 1.0764 - accuracy: 0.6224 - val_loss: 0.9733 - val_accuracy: 0.4488
+Epoch 4/10
+24/24 [==============================] - 16s 665ms/step - loss: 0.8807 - accuracy: 0.6536 - val_loss: 1.0263 - val_accuracy: 0.4921
+Epoch 5/10
+24/24 [==============================] - 16s 650ms/step - loss: 0.8521 - accuracy: 0.6745 - val_loss: 0.9685 - val_accuracy: 0.5945
+Epoch 6/10
+24/24 [==============================] - 16s 645ms/step - loss: 0.8720 - accuracy: 0.6523 - val_loss: 0.8597 - val_accuracy: 0.5906
+Epoch 7/10
+24/24 [==============================] - 16s 647ms/step - loss: 0.8942 - accuracy: 0.6393 - val_loss: 1.0375 - val_accuracy: 0.4488
+Epoch 8/10
+24/24 [==============================] - 16s 656ms/step - loss: 0.8100 - accuracy: 0.6784 - val_loss: 0.8582 - val_accuracy: 0.5945
+Epoch 9/10
+24/24 [==============================] - 16s 647ms/step - loss: 0.7733 - accuracy: 0.6667 - val_loss: 1.2306 - val_accuracy: 0.5394
+Epoch 10/10
+24/24 [==============================] - 16s 641ms/step - loss: 0.7891 - accuracy: 0.6771 - val_loss: 0.8817 - val_accuracy: 0.5984
+Plain ResNet50 Runtime: 168.25 seconds
+
+Experiment 2: Pre-trained ResNet50 (Transfer Learning)
+Creating ResNet50 model with weights: imagenet
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/resnet/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5
+94765736/94765736 [==============================] - 3s 0us/step
+Epoch 1/10
+24/24 [==============================] - 19s 676ms/step - loss: 2.1726 - accuracy: 0.7487 - val_loss: 451513088.0000 - val_accuracy: 0.4724
+Epoch 2/10
+24/24 [==============================] - 16s 652ms/step - loss: 1.2563 - accuracy: 0.6823 - val_loss: 1735167.2500 - val_accuracy: 0.4724
+Epoch 3/10
+24/24 [==============================] - 15s 634ms/step - loss: 0.7608 - accuracy: 0.7721 - val_loss: 17312.2383 - val_accuracy: 0.4173
+Epoch 4/10
+24/24 [==============================] - 16s 642ms/step - loss: 0.6132 - accuracy: 0.7734 - val_loss: 174.3308 - val_accuracy: 0.4724
+Epoch 5/10
+24/24 [==============================] - 16s 658ms/step - loss: 0.6300 - accuracy: 0.7878 - val_loss: 30.9356 - val_accuracy: 0.4173
+Epoch 6/10
+24/24 [==============================] - 16s 656ms/step - loss: 0.7630 - accuracy: 0.7422 - val_loss: 2.5950 - val_accuracy: 0.4724
+Epoch 7/10
+24/24 [==============================] - 16s 636ms/step - loss: 0.7427 - accuracy: 0.7500 - val_loss: 4.0218 - val_accuracy: 0.4173
+Epoch 8/10
+24/24 [==============================] - 16s 646ms/step - loss: 0.5827 - accuracy: 0.7799 - val_loss: 0.9885 - val_accuracy: 0.4724
+Epoch 9/10
+24/24 [==============================] - 16s 646ms/step - loss: 0.5029 - accuracy: 0.8034 - val_loss: 2.0765 - val_accuracy: 0.4724
+Epoch 10/10
+24/24 [==============================] - 16s 640ms/step - loss: 0.4999 - accuracy: 0.8216 - val_loss: 1.9106 - val_accuracy: 0.4724
+Pre-trained ResNet50 Runtime: 164.10 seconds
+
+Experiment 3: Plain ResNet50 (Augmented Data)
+Creating ResNet50 model with weights: None
+Epoch 1/10
+60/60 [==============================] - 25s 381ms/step - loss: 1.7156 - accuracy: 0.5354 - val_loss: 0.9759 - val_accuracy: 0.5079
+Epoch 2/10
+60/60 [==============================] - 20s 328ms/step - loss: 0.8836 - accuracy: 0.5890 - val_loss: 0.9559 - val_accuracy: 0.4803
+Epoch 3/10
+60/60 [==============================] - 20s 325ms/step - loss: 0.8517 - accuracy: 0.6283 - val_loss: 0.9161 - val_accuracy: 0.6181
+Epoch 4/10
+60/60 [==============================] - 20s 337ms/step - loss: 0.8338 - accuracy: 0.6294 - val_loss: 0.8852 - val_accuracy: 0.6614
+Epoch 5/10
+60/60 [==============================] - 20s 329ms/step - loss: 0.8110 - accuracy: 0.6593 - val_loss: 0.8260 - val_accuracy: 0.6614
+Epoch 6/10
+60/60 [==============================] - 19s 320ms/step - loss: 0.7982 - accuracy: 0.6504 - val_loss: 0.8297 - val_accuracy: 0.6299
+Epoch 7/10
+60/60 [==============================] - 19s 315ms/step - loss: 0.7862 - accuracy: 0.6535 - val_loss: 0.8307 - val_accuracy: 0.6102
+Epoch 8/10
+60/60 [==============================] - 20s 328ms/step - loss: 0.7737 - accuracy: 0.6740 - val_loss: 8.7760 - val_accuracy: 0.4724
+Epoch 9/10
+60/60 [==============================] - 20s 324ms/step - loss: 0.7657 - accuracy: 0.6719 - val_loss: 1.0186 - val_accuracy: 0.5551
+Epoch 10/10
+60/60 [==============================] - 20s 326ms/step - loss: 0.7410 - accuracy: 0.6630 - val_loss: 1.3758 - val_accuracy: 0.3465
+Plain ResNet50 (Augmented) Runtime: 203.13 seconds
+
+Experiment 4: Pre-trained ResNet50 (Augmented Data)
+Creating ResNet50 model with weights: imagenet
+Epoch 1/10
+60/60 [==============================] - 23s 341ms/step - loss: 1.0290 - accuracy: 0.6877 - val_loss: 41456.2930 - val_accuracy: 0.4724
+Epoch 2/10
+60/60 [==============================] - 19s 320ms/step - loss: 0.6245 - accuracy: 0.7585 - val_loss: 1.0616 - val_accuracy: 0.4724
+Epoch 3/10
+60/60 [==============================] - 19s 317ms/step - loss: 0.5672 - accuracy: 0.7785 - val_loss: 1.1447 - val_accuracy: 0.4724
+Epoch 4/10
+60/60 [==============================] - 20s 322ms/step - loss: 0.4562 - accuracy: 0.8157 - val_loss: 1.0386 - val_accuracy: 0.4724
+Epoch 5/10
+60/60 [==============================] - 20s 324ms/step - loss: 0.3899 - accuracy: 0.8472 - val_loss: 0.9731 - val_accuracy: 0.4724
+Epoch 6/10
+60/60 [==============================] - 19s 321ms/step - loss: 0.3314 - accuracy: 0.8782 - val_loss: 1.0143 - val_accuracy: 0.4567
+Epoch 7/10
+60/60 [==============================] - 20s 326ms/step - loss: 0.3277 - accuracy: 0.8730 - val_loss: 0.9721 - val_accuracy: 0.3661
+Epoch 8/10
+60/60 [==============================] - 19s 317ms/step - loss: 0.2700 - accuracy: 0.8997 - val_loss: 0.9676 - val_accuracy: 0.4173
+Epoch 9/10
+60/60 [==============================] - 19s 319ms/step - loss: 0.2312 - accuracy: 0.9108 - val_loss: 1.0273 - val_accuracy: 0.4252
+Epoch 10/10
+60/60 [==============================] - 20s 322ms/step - loss: 0.1973 - accuracy: 0.9139 - val_loss: 1.0639 - val_accuracy: 0.4213
+Pre-trained ResNet50 (Augmented) Runtime: 198.81 seconds
+
+Overall Runtime: 734.29 seconds
+
+Comparison of Plain vs Pre-trained ResNet50:
+Epoch 1: Plain Loss = 3.2352, Pre-trained Loss = 2.1726, Plain Accuracy = 0.51, Pre-trained Accuracy = 0.75
+Epoch 2: Plain Loss = 1.0712, Pre-trained Loss = 1.2563, Plain Accuracy = 0.60, Pre-trained Accuracy = 0.68
+Epoch 3: Plain Loss = 1.0764, Pre-trained Loss = 0.7608, Plain Accuracy = 0.62, Pre-trained Accuracy = 0.77
+Epoch 4: Plain Loss = 0.8807, Pre-trained Loss = 0.6132, Plain Accuracy = 0.65, Pre-trained Accuracy = 0.77
+Epoch 5: Plain Loss = 0.8521, Pre-trained Loss = 0.6300, Plain Accuracy = 0.67, Pre-trained Accuracy = 0.79
+Epoch 6: Plain Loss = 0.8720, Pre-trained Loss = 0.7630, Plain Accuracy = 0.65, Pre-trained Accuracy = 0.74
+Epoch 7: Plain Loss = 0.8942, Pre-trained Loss = 0.7427, Plain Accuracy = 0.64, Pre-trained Accuracy = 0.75
+Epoch 8: Plain Loss = 0.8100, Pre-trained Loss = 0.5827, Plain Accuracy = 0.68, Pre-trained Accuracy = 0.78
+Epoch 9: Plain Loss = 0.7733, Pre-trained Loss = 0.5029, Plain Accuracy = 0.67, Pre-trained Accuracy = 0.80
+Epoch 10: Plain Loss = 0.7891, Pre-trained Loss = 0.4999, Plain Accuracy = 0.68, Pre-trained Accuracy = 0.82
+
+Comparison of Plain vs Pre-trained ResNet50 (Augmented Data):
+Epoch 1: Plain Augmented Loss = 1.7156, Pre-trained Augmented Loss = 1.0290, Plain Augmented Accuracy = 0.54, Pre-trained Augmented Accuracy = 0.69
+Epoch 2: Plain Augmented Loss = 0.8836, Pre-trained Augmented Loss = 0.6245, Plain Augmented Accuracy = 0.59, Pre-trained Augmented Accuracy = 0.76
+Epoch 3: Plain Augmented Loss = 0.8517, Pre-trained Augmented Loss = 0.5672, Plain Augmented Accuracy = 0.63, Pre-trained Augmented Accuracy = 0.78
+Epoch 4: Plain Augmented Loss = 0.8338, Pre-trained Augmented Loss = 0.4562, Plain Augmented Accuracy = 0.63, Pre-trained Augmented Accuracy = 0.82
+Epoch 5: Plain Augmented Loss = 0.8110, Pre-trained Augmented Loss = 0.3899, Plain Augmented Accuracy = 0.66, Pre-trained Augmented Accuracy = 0.85
+Epoch 6: Plain Augmented Loss = 0.7982, Pre-trained Augmented Loss = 0.3314, Plain Augmented Accuracy = 0.65, Pre-trained Augmented Accuracy = 0.88
+Epoch 7: Plain Augmented Loss = 0.7862, Pre-trained Augmented Loss = 0.3277, Plain Augmented Accuracy = 0.65, Pre-trained Augmented Accuracy = 0.87
+Epoch 8: Plain Augmented Loss = 0.7737, Pre-trained Augmented Loss = 0.2700, Plain Augmented Accuracy = 0.67, Pre-trained Augmented Accuracy = 0.90
+Epoch 9: Plain Augmented Loss = 0.7657, Pre-trained Augmented Loss = 0.2312, Plain Augmented Accuracy = 0.67, Pre-trained Augmented Accuracy = 0.91
+Epoch 10: Plain Augmented Loss = 0.7410, Pre-trained Augmented Loss = 0.1973, Plain Augmented Accuracy = 0.66, Pre-trained Augmented Accuracy = 0.91
+
+Comparison of Augmented vs Non-Augmented Results:
+Epoch 1: Non-Augmented Loss = 3.2352, Augmented Loss = 1.7156, Non-Augmented Accuracy = 0.51, Augmented Accuracy = 0.54
+Epoch 2: Non-Augmented Loss = 1.0712, Augmented Loss = 0.8836, Non-Augmented Accuracy = 0.60, Augmented Accuracy = 0.59
+Epoch 3: Non-Augmented Loss = 1.0764, Augmented Loss = 0.8517, Non-Augmented Accuracy = 0.62, Augmented Accuracy = 0.63
+Epoch 4: Non-Augmented Loss = 0.8807, Augmented Loss = 0.8338, Non-Augmented Accuracy = 0.65, Augmented Accuracy = 0.63
+Epoch 5: Non-Augmented Loss = 0.8521, Augmented Loss = 0.8110, Non-Augmented Accuracy = 0.67, Augmented Accuracy = 0.66
+Epoch 6: Non-Augmented Loss = 0.8720, Augmented Loss = 0.7982, Non-Augmented Accuracy = 0.65, Augmented Accuracy = 0.65
+Epoch 7: Non-Augmented Loss = 0.8942, Augmented Loss = 0.7862, Non-Augmented Accuracy = 0.64, Augmented Accuracy = 0.65
+Epoch 8: Non-Augmented Loss = 0.8100, Augmented Loss = 0.7737, Non-Augmented Accuracy = 0.68, Augmented Accuracy = 0.67
+Epoch 9: Non-Augmented Loss = 0.7733, Augmented Loss = 0.7657, Non-Augmented Accuracy = 0.67, Augmented Accuracy = 0.67
+Epoch 10: Non-Augmented Loss = 0.7891, Augmented Loss = 0.7410, Non-Augmented Accuracy = 0.68, Augmented Accuracy = 0.66
+
+
+
+2.10.1
+True
+Num GPUs Available:  1
+Found 768 images belonging to 3 classes.
+Found 254 images belonging to 3 classes.
+Found 3272 images belonging to 3 classes.
+Num GPUs Available:  1
+Creating ResNet50 model with weights: None
+2025-04-17 19:41:26.496862: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-17 19:41:26.821851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 7423 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 3080, pci bus id: 0000:01:00.0, compute capability: 8.6
+Plain_ResNet50 start...
+Epoch 1/10
+2025-04-17 19:41:31.134270: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8100
+2025-04-17 19:41:32.200562: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+24/24 [==============================] - 21s 677ms/step - loss: 2.5915 - accuracy: 0.4818 - val_loss: 1.2561 - val_accuracy: 0.4173
+Epoch 2/10
+24/24 [==============================] - 15s 626ms/step - loss: 1.1451 - accuracy: 0.6250 - val_loss: 0.9719 - val_accuracy: 0.4646
+Epoch 3/10
+24/24 [==============================] - 16s 642ms/step - loss: 0.9118 - accuracy: 0.6432 - val_loss: 0.9156 - val_accuracy: 0.4764
+Epoch 4/10
+24/24 [==============================] - 16s 665ms/step - loss: 1.0432 - accuracy: 0.6003 - val_loss: 0.9351 - val_accuracy: 0.6024
+Epoch 5/10
+24/24 [==============================] - 16s 658ms/step - loss: 0.9758 - accuracy: 0.5703 - val_loss: 13.2657 - val_accuracy: 0.4764
+Epoch 6/10
+24/24 [==============================] - 16s 643ms/step - loss: 0.8573 - accuracy: 0.6289 - val_loss: 21.1191 - val_accuracy: 0.5472
+Epoch 7/10
+24/24 [==============================] - 16s 658ms/step - loss: 0.7824 - accuracy: 0.6615 - val_loss: 1.8571 - val_accuracy: 0.5748
+Epoch 8/10
+24/24 [==============================] - 16s 647ms/step - loss: 0.7577 - accuracy: 0.6823 - val_loss: 1.0387 - val_accuracy: 0.5906
+Epoch 9/10
+24/24 [==============================] - 15s 647ms/step - loss: 0.7377 - accuracy: 0.6836 - val_loss: 1.0130 - val_accuracy: 0.3898
+Epoch 10/10
+24/24 [==============================] - 15s 635ms/step - loss: 0.7087 - accuracy: 0.6979 - val_loss: 1.0804 - val_accuracy: 0.4331
+Plain_ResNet50 Runtime: 161.58 seconds
+Creating ResNet50 model with weights: imagenet
+Pre_trained_ResNet50 start...
+Epoch 1/10
+24/24 [==============================] - 18s 686ms/step - loss: 1.1804 - accuracy: 0.7474 - val_loss: 11499.5762 - val_accuracy: 0.4173
+Epoch 2/10
+24/24 [==============================] - 16s 650ms/step - loss: 0.4948 - accuracy: 0.8255 - val_loss: 1985.0546 - val_accuracy: 0.4724
+Epoch 3/10
+24/24 [==============================] - 16s 651ms/step - loss: 0.4533 - accuracy: 0.8451 - val_loss: 6179.3950 - val_accuracy: 0.4724
+Epoch 4/10
+24/24 [==============================] - 16s 652ms/step - loss: 0.3982 - accuracy: 0.9258 - val_loss: 29.3270 - val_accuracy: 0.4724
+Epoch 5/10
+24/24 [==============================] - 16s 648ms/step - loss: 0.2716 - accuracy: 0.9036 - val_loss: 2.0449 - val_accuracy: 0.4724
+Epoch 6/10
+24/24 [==============================] - 16s 645ms/step - loss: 0.2523 - accuracy: 0.9310 - val_loss: 7.1888 - val_accuracy: 0.4724
+Epoch 7/10
+24/24 [==============================] - 16s 647ms/step - loss: 0.2674 - accuracy: 0.9310 - val_loss: 2.2594 - val_accuracy: 0.4724
+Epoch 8/10
+24/24 [==============================] - 16s 654ms/step - loss: 0.3440 - accuracy: 0.8919 - val_loss: 9.9512 - val_accuracy: 0.4724
+Epoch 9/10
+24/24 [==============================] - 16s 641ms/step - loss: 0.2076 - accuracy: 0.9362 - val_loss: 2.2693 - val_accuracy: 0.4724
+Epoch 10/10
+24/24 [==============================] - 16s 646ms/step - loss: 0.2423 - accuracy: 0.9193 - val_loss: 12.1894 - val_accuracy: 0.4724
+Pre_trained_ResNet50 Runtime: 159.35 seconds
+Creating ResNet50 model with weights: None
+plain_aug_model start...
+Epoch 1/10
+103/103 [==============================] - 35s 318ms/step - loss: 1.5119 - accuracy: 0.5296 - val_loss: 1.0153 - val_accuracy: 0.4173
+Epoch 2/10
+103/103 [==============================] - 30s 291ms/step - loss: 0.9000 - accuracy: 0.6097 - val_loss: 1.1166 - val_accuracy: 0.4803
+Epoch 3/10
+103/103 [==============================] - 30s 292ms/step - loss: 0.8872 - accuracy: 0.5917 - val_loss: 0.9730 - val_accuracy: 0.5787
+Epoch 4/10
+103/103 [==============================] - 30s 292ms/step - loss: 0.8473 - accuracy: 0.6051 - val_loss: 0.9262 - val_accuracy: 0.6063
+Epoch 5/10
+103/103 [==============================] - 30s 289ms/step - loss: 0.8357 - accuracy: 0.6180 - val_loss: 0.9403 - val_accuracy: 0.4764
+Epoch 6/10
+103/103 [==============================] - 30s 292ms/step - loss: 0.8243 - accuracy: 0.6342 - val_loss: 1.0230 - val_accuracy: 0.4803
+Epoch 7/10
+103/103 [==============================] - 30s 293ms/step - loss: 0.8035 - accuracy: 0.6608 - val_loss: 1.0406 - val_accuracy: 0.4134
+Epoch 8/10
+103/103 [==============================] - 30s 291ms/step - loss: 0.8018 - accuracy: 0.6568 - val_loss: 0.8708 - val_accuracy: 0.5591
+Epoch 9/10
+103/103 [==============================] - 30s 293ms/step - loss: 0.7892 - accuracy: 0.6629 - val_loss: 0.9426 - val_accuracy: 0.5827
+Epoch 10/10
+103/103 [==============================] - 30s 284ms/step - loss: 0.8008 - accuracy: 0.6519 - val_loss: 0.8806 - val_accuracy: 0.6299
+plain_aug_model Runtime: 306.71 seconds
+Creating ResNet50 model with weights: imagenet
+pretrained_aug_model start...
+Epoch 1/10
+24/24 [==============================] - 19s 677ms/step - loss: 0.8859 - accuracy: 0.7708 - val_loss: 694656.6250 - val_accuracy: 0.4724
+Epoch 2/10
+24/24 [==============================] - 16s 649ms/step - loss: 0.9297 - accuracy: 0.7500 - val_loss: 45014596.0000 - val_accuracy: 0.4724
+Epoch 3/10
+24/24 [==============================] - 15s 652ms/step - loss: 0.6537 - accuracy: 0.8086 - val_loss: 4757.9863 - val_accuracy: 0.4724
+Epoch 4/10
+24/24 [==============================] - 15s 635ms/step - loss: 0.5190 - accuracy: 0.8164 - val_loss: 24813.6016 - val_accuracy: 0.4724
+Epoch 5/10
+24/24 [==============================] - 16s 651ms/step - loss: 0.4336 - accuracy: 0.8438 - val_loss: 7990.9360 - val_accuracy: 0.4724
+Epoch 6/10
+24/24 [==============================] - 16s 656ms/step - loss: 0.4650 - accuracy: 0.8255 - val_loss: 1393.8468 - val_accuracy: 0.4685
+Epoch 7/10
+24/24 [==============================] - 16s 655ms/step - loss: 0.3430 - accuracy: 0.9036 - val_loss: 38.0980 - val_accuracy: 0.1654
+Epoch 8/10
+24/24 [==============================] - 16s 637ms/step - loss: 0.2506 - accuracy: 0.9232 - val_loss: 2.1419 - val_accuracy: 0.4173
+Epoch 9/10
+24/24 [==============================] - 16s 654ms/step - loss: 0.1304 - accuracy: 0.9596 - val_loss: 4.2327 - val_accuracy: 0.4173
+Epoch 10/10
+24/24 [==============================] - 16s 667ms/step - loss: 0.4857 - accuracy: 0.8789 - val_loss: 3.1624 - val_accuracy: 0.4724
+pretrained_aug_model Runtime: 160.18 seconds
+custom_resnet50_kernel3x3 start...
+Epoch 1/10
+24/24 [==============================] - 19s 688ms/step - loss: 3.7462 - accuracy: 0.4310 - val_loss: 0.9478 - val_accuracy: 0.5354
+Epoch 2/10
+24/24 [==============================] - 16s 645ms/step - loss: 0.9094 - accuracy: 0.5521 - val_loss: 0.9937 - val_accuracy: 0.4173
+Epoch 3/10
+24/24 [==============================] - 16s 653ms/step - loss: 0.8951 - accuracy: 0.5599 - val_loss: 0.9531 - val_accuracy: 0.5669
+Epoch 4/10
+24/24 [==============================] - 16s 646ms/step - loss: 0.8466 - accuracy: 0.6042 - val_loss: 0.9580 - val_accuracy: 0.4173
+Epoch 5/10
+24/24 [==============================] - 16s 686ms/step - loss: 0.8312 - accuracy: 0.6393 - val_loss: 0.9607 - val_accuracy: 0.5118
+Epoch 6/10
+24/24 [==============================] - 16s 644ms/step - loss: 0.7786 - accuracy: 0.6484 - val_loss: 0.9518 - val_accuracy: 0.4331
+Epoch 7/10
+24/24 [==============================] - 16s 654ms/step - loss: 0.7731 - accuracy: 0.6784 - val_loss: 0.9535 - val_accuracy: 0.5118
+Epoch 8/10
+24/24 [==============================] - 16s 639ms/step - loss: 0.7528 - accuracy: 0.6849 - val_loss: 0.9557 - val_accuracy: 0.4803
+Epoch 9/10
+24/24 [==============================] - 16s 652ms/step - loss: 0.7557 - accuracy: 0.6732 - val_loss: 0.8643 - val_accuracy: 0.6063
+Epoch 10/10
+24/24 [==============================] - 16s 637ms/step - loss: 0.7257 - accuracy: 0.6979 - val_loss: 0.8358 - val_accuracy: 0.6024
+custom_resnet50_kernel3x3 Runtime: 160.84 seconds
+custom_resnet50_kernel1x1 start...
+Epoch 1/10
+24/24 [==============================] - 17s 677ms/step - loss: 1.6959 - accuracy: 0.5339 - val_loss: 1.2658 - val_accuracy: 0.4646
+Epoch 2/10
+24/24 [==============================] - 15s 642ms/step - loss: 0.8164 - accuracy: 0.6432 - val_loss: 1.1698 - val_accuracy: 0.4646
+Epoch 3/10
+24/24 [==============================] - 15s 634ms/step - loss: 0.8181 - accuracy: 0.6523 - val_loss: 1.3636 - val_accuracy: 0.5315
+Epoch 4/10
+24/24 [==============================] - 16s 661ms/step - loss: 0.7789 - accuracy: 0.6693 - val_loss: 0.8338 - val_accuracy: 0.6063
+Epoch 5/10
+24/24 [==============================] - 16s 646ms/step - loss: 0.7953 - accuracy: 0.6628 - val_loss: 0.8482 - val_accuracy: 0.5866
+Epoch 6/10
+24/24 [==============================] - 17s 691ms/step - loss: 0.7702 - accuracy: 0.6576 - val_loss: 0.9993 - val_accuracy: 0.5000
+Epoch 7/10
+24/24 [==============================] - 16s 648ms/step - loss: 0.7679 - accuracy: 0.6875 - val_loss: 0.9081 - val_accuracy: 0.5827
+Epoch 8/10
+24/24 [==============================] - 16s 684ms/step - loss: 0.7598 - accuracy: 0.6836 - val_loss: 0.8253 - val_accuracy: 0.6220
+Epoch 9/10
+24/24 [==============================] - 16s 657ms/step - loss: 0.7331 - accuracy: 0.6992 - val_loss: 0.8005 - val_accuracy: 0.6457
+Epoch 10/10
+24/24 [==============================] - 16s 676ms/step - loss: 0.7334 - accuracy: 0.7044 - val_loss: 1.1727 - val_accuracy: 0.5000
+custom_resnet50_kernel1x1 Runtime: 160.88 seconds
+custom_resnet50_kernel3x3_v2 start...
+Epoch 1/10
+24/24 [==============================] - 20s 742ms/step - loss: 6.0323 - accuracy: 0.3893 - val_loss: 13.9929 - val_accuracy: 0.4685
+Epoch 2/10
+24/24 [==============================] - 16s 665ms/step - loss: 0.9762 - accuracy: 0.5247 - val_loss: 0.9179 - val_accuracy: 0.5591
+Epoch 3/10
+24/24 [==============================] - 16s 659ms/step - loss: 0.8678 - accuracy: 0.6068 - val_loss: 0.8915 - val_accuracy: 0.5827
+Epoch 4/10
+24/24 [==============================] - 16s 658ms/step - loss: 0.9146 - accuracy: 0.5586 - val_loss: 1.0258 - val_accuracy: 0.4173
+Epoch 5/10
+24/24 [==============================] - 16s 670ms/step - loss: 0.8163 - accuracy: 0.6419 - val_loss: 0.9361 - val_accuracy: 0.5866
+Epoch 6/10
+24/24 [==============================] - 16s 657ms/step - loss: 0.8133 - accuracy: 0.6523 - val_loss: 1.0116 - val_accuracy: 0.4685
+Epoch 7/10
+24/24 [==============================] - 16s 650ms/step - loss: 0.7604 - accuracy: 0.6823 - val_loss: 1.0126 - val_accuracy: 0.4764
+Epoch 8/10
+24/24 [==============================] - 16s 645ms/step - loss: 0.7379 - accuracy: 0.6706 - val_loss: 1.0283 - val_accuracy: 0.5787
+Epoch 9/10
+24/24 [==============================] - 16s 665ms/step - loss: 0.7689 - accuracy: 0.6641 - val_loss: 0.9646 - val_accuracy: 0.5827
+Epoch 10/10
+24/24 [==============================] - 16s 661ms/step - loss: 0.7517 - accuracy: 0.6732 - val_loss: 0.9570 - val_accuracy: 0.5945
+custom_resnet50_kernel3x3_v2 Runtime: 163.01 seconds
+custom_resnet50_frozen start...
+Epoch 1/10
+24/24 [==============================] - 18s 690ms/step - loss: 1.5288 - accuracy: 0.5573 - val_loss: 1.0259 - val_accuracy: 0.4567
+Epoch 2/10
+24/24 [==============================] - 16s 664ms/step - loss: 0.8422 - accuracy: 0.6471 - val_loss: 0.9803 - val_accuracy: 0.4173
+Epoch 3/10
+24/24 [==============================] - 16s 647ms/step - loss: 0.7604 - accuracy: 0.6797 - val_loss: 0.9806 - val_accuracy: 0.4173
+Epoch 4/10
+24/24 [==============================] - 16s 657ms/step - loss: 0.7818 - accuracy: 0.6654 - val_loss: 0.9812 - val_accuracy: 0.4173
+Epoch 5/10
+24/24 [==============================] - 16s 667ms/step - loss: 0.7316 - accuracy: 0.6823 - val_loss: 1.0526 - val_accuracy: 0.4724
+Epoch 6/10
+24/24 [==============================] - 17s 706ms/step - loss: 0.6665 - accuracy: 0.7214 - val_loss: 1.1037 - val_accuracy: 0.4173
+Epoch 7/10
+24/24 [==============================] - 18s 737ms/step - loss: 0.6658 - accuracy: 0.7083 - val_loss: 1.3531 - val_accuracy: 0.4724
+Epoch 8/10
+24/24 [==============================] - 16s 690ms/step - loss: 0.6803 - accuracy: 0.7161 - val_loss: 1.2415 - val_accuracy: 0.4724
+Epoch 9/10
+24/24 [==============================] - 15s 642ms/step - loss: 0.6436 - accuracy: 0.7344 - val_loss: 1.1905 - val_accuracy: 0.4173
+Epoch 10/10
+24/24 [==============================] - 16s 652ms/step - loss: 0.6305 - accuracy: 0.7266 - val_loss: 1.3359 - val_accuracy: 0.4567
+custom_resnet50_frozen Runtime: 163.42 seconds
+
+Overall Runtime: 1440.64 seconds
+
+Validation Accuracy per Epoch:
+       Plain_ResNet50  ...  custom_resnet50_frozen
+Epoch                  ...                        
+1              0.4173  ...                  0.4567
+2              0.4646  ...                  0.4173
+3              0.4764  ...                  0.4173
+4              0.6024  ...                  0.4173
+5              0.4764  ...                  0.4724
+6              0.5472  ...                  0.4173
+7              0.5748  ...                  0.4724
+8              0.5906  ...                  0.4724
+9              0.3898  ...                  0.4173
+10             0.4331  ...                  0.4567
+
+[10 rows x 8 columns]
+
+Training Accuracy per Epoch:
+       Plain_ResNet50  ...  custom_resnet50_frozen
+Epoch                  ...                        
+1              0.4818  ...                  0.5573
+2              0.6250  ...                  0.6471
+3              0.6432  ...                  0.6797
+4              0.6003  ...                  0.6654
+5              0.5703  ...                  0.6823
+6              0.6289  ...                  0.7214
+7              0.6615  ...                  0.7083
+8              0.6823  ...                  0.7161
+9              0.6836  ...                  0.7344
+10             0.6979  ...                  0.7266
+
+[10 rows x 8 columns]
